@@ -22,6 +22,7 @@ def encodings_and_duplicates_images_dir(image_dir) -> Dict:
     duplicates = CNN().find_duplicates(encoding_map=encodings, scores=True)
     return duplicates
 
+#find name of image had max score
 def find_name_duplicated_image(duplicates, filename):
     score_arr = []
     image_detect_arr = []
@@ -36,6 +37,7 @@ def find_name_duplicated_image(duplicates, filename):
 
     return (image_detect_arr[index_max_score]) #Image has max score: ảnh có xác suất giống lớn nhất
 
+#find position of image had max score
 def find_position_duplicated_image(duplicates, filename):
     score_arr = []
     image_detect_arr = []
@@ -54,7 +56,8 @@ def find_position_duplicated_image(duplicates, filename):
     position = split_position[:split_position.index('.jpg')]
     return (int(position))
 
-    # Display original image and image had max score
+
+# Display original image and image had max score
 def display_images_to_compare(filename, duplicated_filename, image_dir):
     original_img = mpimg.imread(image_dir+'/'+filename)
     original_img_plot = plt.imshow(original_img)
